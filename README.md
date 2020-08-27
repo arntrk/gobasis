@@ -7,6 +7,6 @@ Golang implementents BSpline Bassis function, using the
 ## To use  
 
 ```bash
-$ go add github.com/arntrk/gobasis
+$ go get github.com/arntrk/gobasis
 ```
 

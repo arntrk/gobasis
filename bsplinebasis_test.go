@@ -32,7 +32,6 @@ func TestFirstOrder(t *testing.T) {
 			t.Errorf("expected result[%v]: '%v' got '%v'", i, rr[idx], result[0])
 		}
 	}
-
 }
 
 func TestBSplineBasis_Eval(t *testing.T) {
@@ -65,6 +64,11 @@ func TestBSplineBasis_Eval(t *testing.T) {
 		{
 			"First order for interval [0, 1] when t is utside interval from right side",
 			&BSplineBasis{order: 1, knts: []float64{0.0, 1.0}}, args{t: 1.000001}, 0, []float64{0.0},
+		},
+		{
+			"hahahah",
+			&BSplineBasis{order: 4, knts: []float64{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0}},
+			args{t: 0.0}, 0, []float64{1.0, 0.0, 0.0, 0.0},
 		},
 	}
 	for _, tt := range tests {

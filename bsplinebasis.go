@@ -73,13 +73,15 @@ func (bs *BSplineBasis) Eval(t float64) (int, []float64) {
 		basis[j] = coefs[j] * basis[j-1]
 
 		// calculate both terms
-		for r := j; r > 0; r-- {
+		for r := j - 1; r > 0; r-- {
 			basis[r] = coefs[r]*basis[r-1] + (1.0-coefs[r+1])*basis[r]
 		}
 
 		// calculate last term, special case
 		basis[0] = (1.0 - coefs[1]) * basis[0]
 	}
+
+	i -= (bs.order - 1)
 
 	return i, basis
 }

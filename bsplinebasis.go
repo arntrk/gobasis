@@ -88,6 +88,11 @@ func (bs *BSplineBasis) Eval(t float64) (int, []float64) {
 	return i, basis
 }
 
+// Order return order of the bspline basis
+func (bs *BSplineBasis) Order() int {
+	return bs.order
+}
+
 // Knot return the knot value at index i
 func (bs *BSplineBasis) Knot(i int) float64 {
 	return bs.knts[i]

@@ -48,7 +48,18 @@ func TestDerivate(t *testing.T) {
 	} else {
 		t.Errorf("derivate is %v", basis2)
 	}
+}
 
+func TestOrder(t *testing.T) {
+	coefs := []float64{0.0, 0.0, 1.0, 1.0}
+
+	basis, _ := Create(coefs, 2)
+
+	order := basis.Order()
+
+	if order != 2 {
+		t.Errorf("expected: %v got %v", 2, basis.order)
+	}
 }
 
 func TestBSplineBasis_Eval(t *testing.T) {
@@ -121,6 +132,23 @@ func TestBSplineBasis_Interval(t *testing.T) {
 			}
 			if got1 != tt.want1 {
 				t.Errorf("BSplineBasis.Interval() got1 = %v, want %v", got1, tt.want1)
+			}
+		})
+	}
+}
+
+func TestBSplineBasis_Order(t *testing.T) {
+	tests := []struct {
+		name string
+		bs   *BSplineBasis
+		want int
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.bs.Order(); got != tt.want {
+				t.Errorf("BSplineBasis.Order() = %v, want %v", got, tt.want)
 			}
 		})
 	}

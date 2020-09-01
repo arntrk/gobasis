@@ -1,6 +1,8 @@
 package gobasis
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // BSplineBasis object
 type BSplineBasis struct {
@@ -84,4 +86,18 @@ func (bs *BSplineBasis) Eval(t float64) (int, []float64) {
 	i -= (bs.order - 1)
 
 	return i, basis
+}
+
+// Derivate return BSplineBasis with order-1
+func (bs *BSplineBasis) Derivate() *BSplineBasis {
+
+	order := bs.order - 1
+
+	if order < 1 {
+		return nil
+	}
+
+	knts := bs.knts[1 : len(bs.knts)-1]
+
+	return &BSplineBasis{order: order, knts: knts}
 }

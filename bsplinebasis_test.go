@@ -34,6 +34,23 @@ func TestFirstOrder(t *testing.T) {
 	}
 }
 
+func TestDerivate(t *testing.T) {
+	coefs := []float64{0.0, 0.0, 1.0, 1.0}
+
+	basis, _ := Create(coefs, 2)
+
+	basis2 := basis.Derivate()
+
+	if basis2 != nil {
+		if basis2.order != 1 {
+			t.Errorf("expected: %v got %v", basis.order-1, basis2.order)
+		}
+	} else {
+		t.Errorf("derivate is %v", basis2)
+	}
+
+}
+
 func TestBSplineBasis_Eval(t *testing.T) {
 	type args struct {
 		t float64

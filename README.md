@@ -10,3 +10,9 @@ Golang implementents BSpline Bassis function, using the
 $ go get github.com/arntrk/gobasis
 ```
 
+## execute test
+
+```bash
+$ go test
+```
+
